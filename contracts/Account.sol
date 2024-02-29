@@ -6,6 +6,13 @@ import "@account-abstraction/contracts/core/EntryPoint.sol";
 import "@account-abstraction/contracts/interfaces/IAccount.sol";
 
 contract Account is IAccount {
+    uint public count;
+    address public owner;
+
+    constructor(address _owener) {
+        owner = _owener;
+    }
+
     // allowing all user to use user ops against AA
     // every user ops is a valid user ops right now.
     function validateUserOp(

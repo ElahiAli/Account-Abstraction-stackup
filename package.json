@@ -16,6 +16,7 @@
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.4.1",
     "@nomiclabs/hardhat-etherscan": "^3.1.8",
     "@openzeppelin/contracts": "^4.2.0",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.20.1"
   }
 }

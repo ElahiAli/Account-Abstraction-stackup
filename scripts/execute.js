@@ -21,10 +21,21 @@ async function main() {
         nonce: FACTORY_NONCE,
     });
 
+    // AcountFactory contract code
+    const AccountFactory = await hre.ethers.getContractFactory("AccountFactory");
+
+    const [signer0] = await hre.ethers.getSigners();
+    const address0 = signer0.getAddress();
+
+    // initCode = factory address + encode function data(only one function exist in AccountFactory contract: createAcount )
+    const initCode =
+        FACTORY_ADDRESS + AccountFactory.interface.encodeFunctionData("createAccount", [address0]);
+
     // filling with dommy values for now
     userOp = {
         sender, //smart account address
-        nonce: initCode,
+        nonce,
+        initCode,
         callData,
         callGasLimit: 200_000,
         verificationGasLimit: 200_000,

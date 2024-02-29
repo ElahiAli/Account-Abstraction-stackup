@@ -13,7 +13,7 @@ npx hardhat run scripts/deploy.js
 ```
 
 ```
-using openzeppelin @4.2.0 version for EntryPoint
+using openzeppelin @4.2.0 version for EntryPoint contract.
 ```
 
 how does entry point find out about an account?
@@ -33,3 +33,19 @@ this function will create a factory and then it will pass the factory to the ini
 
 what is Account Factory?
 it will create and deploy a new smart account.
+developer can do anything in this function.
+
+NONCE Manager? 
+EntryPoint contract using a contract named NonceManager ,
+in this contract there is mapping that hold a sequence of nonce,
+this mapping, mapp a key of nonce for different smart contracts 
+
+
+
+
+
+
+
+
+
+    

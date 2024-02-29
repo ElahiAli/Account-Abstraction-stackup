@@ -40,11 +40,18 @@ async function main() {
 
     // console.log("initCode is fine", initCode);
 
+    //pre-fund on behalf of smart account
+    await entryPoint.depositTo(sender, { value: hre.ethers.parseEther("100") });
+
+    // const balance = await entryPoint.getDepositInfo(sender);
+    // console.log("balance of sender:", balance.toString());
+
+    const balance = await ethers.provider.getBalance(sender);
+    console.log("Balance of", sender, "is", balance.toString(), "ETH");
+
     const Account = await hre.ethers.getContractFactory("Account");
     // console.log("Account is fine", Account);
 
-    //pre-fund on behalf of smart account
-    await entryPoint.depositTo(sender, { value: hre.ethers.parseEther("100") });
     // filling with dommy values for now
     userOp = {
         sender, //smart account address

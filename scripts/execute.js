@@ -31,12 +31,14 @@ async function main() {
     const initCode =
         FACTORY_ADDRESS + AccountFactory.interface.encodeFunctionData("createAccount", [address0]);
 
+    const Account = await hre.ethers.getContractFactory("Account");
+
     // filling with dommy values for now
     userOp = {
         sender, //smart account address
         nonce: await entryPoint.getNonce(sender, 0), // managing user op nonce with nonce manager of EntryPoint contract, sender is the smart account and 0 is the nonce key
         initCode,
-        callData,
+        callData: Account.interface.encodeFunctionData("execute"),
         callGasLimit: 200_000,
         verificationGasLimit: 200_000,
         preVerificationGas: 50_000,

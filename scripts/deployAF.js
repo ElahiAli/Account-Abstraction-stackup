@@ -18,4 +18,4 @@ main().catch((error) => {
 // hh run scripts/depoyEp.js --network localhost
 // deploying contract on localhost
 
-// account factory address: 0x5FbDB2315678afecb367f032d93F642f64180aa3 on localhost
+// account factory address: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 on localhost

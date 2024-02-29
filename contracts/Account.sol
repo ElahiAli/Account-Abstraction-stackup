@@ -22,4 +22,8 @@ contract Account is IAccount {
     ) external pure returns (uint256 validationData) {
         return 0;
     }
+
+    function execute() external {
+        count++;
+    }
 }

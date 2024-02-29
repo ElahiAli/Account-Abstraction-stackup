@@ -34,7 +34,7 @@ async function main() {
     // filling with dommy values for now
     userOp = {
         sender, //smart account address
-        nonce,
+        nonce: await entryPoint.getNonce(sender, 0), // managing user op nonce with nonce manager of EntryPoint contract, sender is the smart account and 0 is the nonce key
         initCode,
         callData,
         callGasLimit: 200_000,

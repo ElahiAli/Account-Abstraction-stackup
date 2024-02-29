@@ -43,6 +43,8 @@ async function main() {
     const Account = await hre.ethers.getContractFactory("Account");
     // console.log("Account is fine", Account);
 
+    //pre-fund on behalf of smart account
+    await entryPoint.depositTo(sender, { value: hre.ethers.parseEther("100") });
     // filling with dommy values for now
     userOp = {
         sender, //smart account address
@@ -59,7 +61,7 @@ async function main() {
     };
 
     // making transaction
-    // any AA21 error is about EntryPoint
+    // any AA21 error is about EntryPoint -> it need prefund, storing some ether on behalf of smart acount to pay the gas against the entrypoint
     const tx = await entryPoint.handleOps([userOp], address0); // instead of entrypoint we should use a bundler -> address0 should be bundler address to take the fees.
     const receipt = await tx.wait();
     console.log(receipt);

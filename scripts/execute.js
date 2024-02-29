@@ -12,6 +12,7 @@ const EP_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 async function main() {
     const entryPoint = await hre.ethers.getContractAt("EntryPoint", EP_ADDRESS);
+    // console.log("entryPoint is fine", entryPoint);
 
     // sender address has two way to be created:
     //CREATE: hash(sender + nonce) -> gettign the hash of deployer which is the AcountFactory and it's nonce, sender means deployer.
@@ -21,17 +22,26 @@ async function main() {
         nonce: FACTORY_NONCE,
     });
 
+    // console.log("sender address:", sender);
+
     // AcountFactory contract code
     const AccountFactory = await hre.ethers.getContractFactory("AccountFactory");
 
+    // console.log("AccountFactory is fine", AccountFactory);
     const [signer0] = await hre.ethers.getSigners();
-    const address0 = signer0.getAddress();
+    const address0 = await signer0.getAddress();
+    // console.log("first address:", address0);
 
     // initCode = factory address + encode function data(only one function exist in AccountFactory contract: createAcount )
+    // slice is removing the first 2 words(0x) of AccountFactory address to be valid
     const initCode =
-        FACTORY_ADDRESS + AccountFactory.interface.encodeFunctionData("createAccount", [address0]);
+        FACTORY_ADDRESS +
+        AccountFactory.interface.encodeFunctionData("createAccount", [address0]).slice(2);
+
+    // console.log("initCode is fine", initCode);
 
     const Account = await hre.ethers.getContractFactory("Account");
+    // console.log("Account is fine", Account);
 
     // filling with dommy values for now
     userOp = {
@@ -47,6 +57,12 @@ async function main() {
         paymasterAndData: "0x",
         signature: "0x",
     };
+
+    // making transaction
+    // any AA21 error is about EntryPoint
+    const tx = await entryPoint.handleOps([userOp], address0); // instead of entrypoint we should use a bundler -> address0 should be bundler address to take the fees.
+    const receipt = await tx.wait();
+    console.log(receipt);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

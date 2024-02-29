@@ -1,5 +1,12 @@
 const hre = require("hardhat");
 
+// manual nonce only for test
+// for deploying different smart account nonce must be increased
+const FACTORY_NONCE = 1;
+
+// AcountFactory address in localhost
+const FACTORY_ADDRESS = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+
 async function main() {
     // filling with dommy values for now
     userOp = {

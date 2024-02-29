@@ -12,6 +12,15 @@ const EP_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 async function main() {
     const entryPoint = await hre.ethers.getContractAt("EntryPoint", EP_ADDRESS);
+
+    // sender address has two way to be created:
+    //CREATE: hash(sender + nonce) -> gettign the hash of deployer which is the AcountFactory and it's nonce, sender means deployer.
+    //CREATE2: hash(0xFF(palceHolder) + sender + bytecode + salt)
+    const sender = await hre.ethers.getCreateAddress({
+        from: FACTORY_ADDRESS,
+        nonce: FACTORY_NONCE,
+    });
+
     // filling with dommy values for now
     userOp = {
         sender, //smart account address

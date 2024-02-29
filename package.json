@@ -9,10 +9,13 @@
   "author": "Ali Elahi",
   "license": "ISC",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
-    "hardhat": "^2.20.1"
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0"
   },
   "dependencies": {
-    "@account-abstraction/contracts": "^0.6.0"
+    "@account-abstraction/contracts": "^0.6.0",
+    "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.4.1",
+    "@nomiclabs/hardhat-etherscan": "^3.1.8",
+    "@openzeppelin/contracts": "^4.2.0",
+    "dotenv": "^16.4.5"
   }
 }

@@ -9,7 +9,15 @@ require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.24",
+    solidity: {
+        version: "0.8.19",
+        settings: {
+            optimizer: {
+            enabled: true,
+            runs: 1000,
+            }
+        }
+    },
   defaultNetwork: "hardhat",
     networks: {
         hardhat: {
@@ -34,6 +42,8 @@ module.exports = {
     //     noColors: true,
     //     // coinmarketcap: COINMARKETCAP_API_KEY,
     // },
+
+    
     namedAccounts: {
         deployer: {
             default: 0,

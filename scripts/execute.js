@@ -12,6 +12,7 @@ const EP_ADDRESS = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 
 // Paymaster contract address in localhost
 const PAYMASTER_ADDRESS = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+
 async function main() {
     const entryPoint = await hre.ethers.getContractAt("EntryPoint", EP_ADDRESS);
     // console.log("entryPoint is fine", entryPoint);
@@ -43,7 +44,10 @@ async function main() {
     // console.log("initCode is fine", initCode);
 
     //pre-fund on behalf of smart account
-    await entryPoint.depositTo(sender, { value: hre.ethers.parseEther("100") });
+    // await entryPoint.depositTo(sender, { value: hre.ethers.parseEther("100") });
+
+    //pre-fund on behalf of paymaster
+    await entryPoint.depositTo(PAYMASTER_ADDRESS, { value: hre.ethers.parseEther("100") });
 
     // const balance = await entryPoint.getDepositInfo(sender);
     // console.log("balance of sender:", balance.toString());
@@ -65,7 +69,7 @@ async function main() {
         preVerificationGas: 50_000,
         maxFeePerGas: hre.ethers.parseEther("10", "gwei"),
         maxPriorityFeePerGas: hre.ethers.parseEther("5", "gwei"),
-        paymasterAndData: "0x",
+        paymasterAndData: PAYMASTER_ADDRESS,
         signature: "0x",
     };
 

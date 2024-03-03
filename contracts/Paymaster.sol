@@ -20,4 +20,8 @@ contract Paymaster is IPaymaster {
     }
 
     function postOp(PostOpMode mode, bytes calldata context, uint256 actualGasCost) external {}
+
+    fallback() external payable {}
+
+    receive() external payable {}
 }

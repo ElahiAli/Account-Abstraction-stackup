@@ -1,5 +1,4 @@
 const hre = require("hardhat");
-
 // manual nonce only for test
 // for deploying different smart account nonce must be increased
 const FACTORY_NONCE = 1;
@@ -47,13 +46,21 @@ async function main() {
     // await entryPoint.depositTo(sender, { value: hre.ethers.parseEther("100") });
 
     //pre-fund on behalf of paymaster
+    // const [deployer] = await hre.ethers.getSigners();
+    // const amountToSend = hre.ethers.parseEther("100");
+    // const txP = await deployer.sendTransaction({
+    //     to: PAYMASTER_ADDRESS,
+    //     value: amountToSend,
+    // });
+
+    // await txP.wait();
     await entryPoint.depositTo(PAYMASTER_ADDRESS, { value: hre.ethers.parseEther("100") });
 
     // const balance = await entryPoint.getDepositInfo(sender);
     // console.log("balance of sender:", balance.toString());
 
-    const balance = await ethers.provider.getBalance(sender);
-    console.log("Balance of", sender, "is", balance.toString(), "ETH");
+    const balance = await ethers.provider.getBalance(PAYMASTER_ADDRESS);
+    console.log("Balance of", PAYMASTER_ADDRESS, "is", balance.toString(), "ETH");
 
     const Account = await hre.ethers.getContractFactory("Account");
     // console.log("Account is fine", Account);

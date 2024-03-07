@@ -11,7 +11,25 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
     log("-------------------------------------------");
 
-    const arguments = [];
+    const kipToken = await deploy("KipMock", {
+        from: deployer,
+        args: [],
+        log: true,
+        // waitConfirmations: waitBlockConfirmations,
+    });
+
+    log("-------------------------------------------");
+
+    const poolContract = await deploy("PoolMock", {
+        from: deployer,
+        args: [],
+        log: true,
+        // waitConfirmations: waitBlockConfirmations,
+    });
+
+    log("-------------------------------------------");
+
+    const arguments = [poolContract.address, kipToken.address, appOwner, modelOwner, dataOwner];
     const accountAbstraction = await deploy("AccountAbstraction", {
         from: deployer,
         args: arguments,

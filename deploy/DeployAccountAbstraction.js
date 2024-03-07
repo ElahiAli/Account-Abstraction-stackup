@@ -1,5 +1,7 @@
 const hre = require("hardhat");
-
+const appOwner = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
+const modelOwner = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8";
+const dataOwner = "0x90F79bf6EB2c4f870365E785982E1f101E93b906";
 module.exports = async ({ getNamedAccounts, deployments }) => {
     const { deploy, log } = deployments;
     const { deployer } = await getNamedAccounts();
@@ -10,7 +12,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     log("-------------------------------------------");
 
     const arguments = [];
-    const accountFactory = await deploy("AccountFactory", {
+    const accountAbstraction = await deploy("AccountAbstraction", {
         from: deployer,
         args: arguments,
         log: true,
@@ -18,13 +20,13 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     });
     // if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
     //     log("Verifying...");
-    //     await verify(accountFactory.address, arguments);
+    //     await verify(accountAbstraction.address, arguments);
     //     log("Verified!");
     // }
     log("----------------------------------------------------");
 };
 
-module.exports.tags = ["all", "accountFactory"];
+module.exports.tags = ["all", "accountAbstraction"];
 
 // note:
 // hh run scripts/DeployAccountAbstraction.js --network localhost

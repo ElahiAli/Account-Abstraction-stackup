@@ -25,22 +25,8 @@ async function main() {
     console.log(`Account address: ${address}`);
 
     // Create the call data
-    const to = address; // Receiving address, in this case we will send it to ourselves
-    const token = "0x3870419Ba2BBf0127060bCB37f69A1b1C090992B"; // Address of the ERC-20 token
-    const value = "0"; // Amount of the ERC-20 token to transfer
 
-    // Read the ERC-20 token contract
-    const ERC20_ABI = require("./AccountAbstraction.json"); // Account-Abstraction ABI in json format
-    const erc20 = new ethers.Contract(token, ERC20_ABI, provider);
-    const decimals = await Promise.all([erc20.decimals()]);
-    const amount = ethers.utils.parseUnits(value, decimals);
-
-    // Encode the calls
-    const callTo = [token, token];
-    const callData = [
-        erc20.interface.encodeFunctionData("approve", [to, amount]),
-        erc20.interface.encodeFunctionData("transfer", [to, amount]),
-    ];
+    const aaAdress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"; // Address of the Account Abstraction
 }
 
 main().catch((err) => console.error("Error:", err));

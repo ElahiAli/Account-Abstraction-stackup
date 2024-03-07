@@ -27,6 +27,11 @@ async function main() {
     // Create the call data
 
     const aaAdress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"; // Address of the Account Abstraction
+
+    // Read the Account Abstraction contract
+    const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
+    const AccountAbstraction_ABI = require("./AccountAbstraction.json"); // Account-Abstraction ABI in json format
+    const erc20 = new ethers.Contract(aaAdress, AccountAbstraction_ABI, provider);
 }
 
 main().catch((err) => console.error("Error:", err));

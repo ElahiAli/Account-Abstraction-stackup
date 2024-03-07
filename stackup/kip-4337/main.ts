@@ -36,6 +36,12 @@ async function main() {
     // Encode the calls
     const callTo = [aaAdress, aaAdress];
     const callData = [AAContract.interface.encodeFunctionData("getAccountAbstractionBalance")];
+
+    // Send the User Operation to the ERC-4337 mempool
+    const client = await Client.init(rpcUrl);
+    const res = await client.sendUserOperation(builder.executeBatch(callTo, callData), {
+        onBuild: (op) => console.log("Signed UserOperation:", op),
+    });
 }
 
 main().catch((err) => console.error("Error:", err));

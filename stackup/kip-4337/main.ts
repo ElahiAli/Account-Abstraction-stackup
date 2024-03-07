@@ -32,6 +32,10 @@ async function main() {
     const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
     const AccountAbstraction_ABI = require("./AccountAbstraction.json"); // Account-Abstraction ABI in json format
     const erc20 = new ethers.Contract(aaAdress, AccountAbstraction_ABI, provider);
+
+    // Encode the calls
+    const callTo = [aaAdress, aaAdress];
+    const callData = [erc20.interface.encodeFunctionData("getAccountAbstractionBalance")];
 }
 
 main().catch((err) => console.error("Error:", err));

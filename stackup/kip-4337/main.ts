@@ -16,6 +16,13 @@ async function main() {
             : {
                   paymasterMiddleware: paymasterMiddleware,
               };
+
+    // Initialize the account
+    const signingKey = "0x4337433743374337433743374337433743374337433743374337433743374337";
+    const signer = new ethers.Wallet(signingKey);
+    var builder = await Presets.Builder.SimpleAccount.init(signer, rpcUrl, opts);
+    const address = builder.getSender();
+    console.log(`Account address: ${address}`);
 }
 
 main().catch((err) => console.error("Error:", err));

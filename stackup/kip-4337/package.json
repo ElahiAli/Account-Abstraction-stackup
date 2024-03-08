@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx ts-node main.ts",
+    "dev": "npx ts-node",
     "account-abstraction-sdk": "npx ts-node ./examples/account-abstraction-sdk-example.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

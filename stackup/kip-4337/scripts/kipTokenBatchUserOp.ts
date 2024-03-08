@@ -32,7 +32,7 @@ async function main() {
 
     // Read the KIP Token contract
     const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
-    const KIP_TOKEN_ABI = require("./KIP.json"); // KIP-Token ABI in json format
+    const KIP_TOKEN_ABI = require("../abi/KIP.json"); // KIP-Token ABI in json format
     const kipTokenContract = new ethers.Contract(kipTokenAddress, KIP_TOKEN_ABI, provider);
 
     const callTo = [

@@ -34,7 +34,7 @@ async function main() {
 
     // Read the KIP Token contract
     const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
-    const TETHER_ABI = require("./tetherAbi.json"); // KIP-Token ABI in json format
+    const TETHER_ABI = require("../abi/tetherAbi.json"); // KIP-Token ABI in json format
     const TetherContract = new ethers.Contract(TetherContractAddress, TETHER_ABI, provider);
 
     const callTo = [

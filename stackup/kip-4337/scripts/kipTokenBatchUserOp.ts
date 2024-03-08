@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { Presets, Client } from "userop";
-import * as config from "./config.json";
+import * as config from "../config.json";
 
 const rpcUrl = "https://public.stackup.sh/api/v1/node/ethereum-sepolia";
 
@@ -35,15 +35,26 @@ async function main() {
     const KIP_TOKEN_ABI = require("./KIP.json"); // KIP-Token ABI in json format
     const kipTokenContract = new ethers.Contract(kipTokenAddress, KIP_TOKEN_ABI, provider);
 
+    const callTo = [
+        kipTokenAddress,
+        kipTokenAddress,
+        kipTokenAddress,
+        kipTokenAddress,
+        kipTokenAddress,
+    ];
+    const callData = [
+        kipTokenContract.interface.encodeFunctionData("mint"),
+        kipTokenContract.interface.encodeFunctionData("mint"),
+        kipTokenContract.interface.encodeFunctionData("mint"),
+        kipTokenContract.interface.encodeFunctionData("mint"),
+        kipTokenContract.interface.encodeFunctionData("mint"),
+    ];
+
     // Send the User Operation to the ERC-4337 mempool
-    // encode the function call
     const client = await Client.init(rpcUrl);
-    const res = await client.sendUserOperation(
-        builder.execute(kipTokenAddress, 0, kipTokenContract.interface.encodeFunctionData("mint")),
-        {
-            onBuild: (op) => console.log("Signed UserOperation:", op),
-        }
-    );
+    const res = await client.sendUserOperation(builder.executeBatch(callTo, callData), {
+        onBuild: (op) => console.log("Signed UserOperation:", op),
+    });
 
     // Return receipt
     console.log(`UserOpHash: ${res.userOpHash}`);

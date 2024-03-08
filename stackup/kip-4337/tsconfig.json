@@ -6,5 +6,12 @@
     "rootDir": "./",
     "strict": true,
     "resolveJsonModule": true
-  }
+  },
+  "include": [
+    "./scripts/main.ts",
+    "./scripts/kipTokenBatchUserOp.ts",
+    "./scripts/kipTokenSingleUserOp.ts",
+    "./scripts/TetherMintBatchTx.ts"
+
+  ]
 }

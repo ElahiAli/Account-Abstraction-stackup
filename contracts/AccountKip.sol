@@ -17,8 +17,10 @@ contract AccountAbstraction {
 
     mapping(address => uint) private s_userEscrowedToken;
 
-    constructor(address _poolContractAddress, address _tokenAddress) // address _appOwner,
-    // address _modelOwner,
+    constructor(
+        address _poolContractAddress,
+        address _tokenAddress // address _appOwner,
+    ) // address _modelOwner,
     // address _dataOwner
     {
         poolContractAddress = _poolContractAddress;
@@ -64,3 +66,6 @@ contract AccountAbstraction {
         return kipToken.balanceOf(address(this));
     }
 }
+
+// contract address on mumbai
+// 0xE90116418c24817C649046075F745525C12b3daA

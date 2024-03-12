@@ -8,10 +8,10 @@
     "resolveJsonModule": true
   },
   "include": [
-    "./scripts/main.ts",
-    "./scripts/kipTokenBatchUserOp.ts",
-    "./scripts/kipTokenSingleUserOp.ts",
-    "./scripts/TetherMintBatchTx.ts"
+    "mockScripts/main.ts",
+    "mockScripts/kipTokenBatchUserOp.ts",
+    "mockScripts/kipTokenSingleUserOp.ts",
+    "mockScripts/TetherMintBatchTx.ts"
 
   ]
 }

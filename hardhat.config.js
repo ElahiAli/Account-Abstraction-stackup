@@ -54,6 +54,9 @@ module.exports = {
     //     noColors: true,
     //     // coinmarketcap: COINMARKETCAP_API_KEY,
     // },
+    etherscan: {
+        apiKey: ETHERSCAN_API_KEY,
+    },
 
     namedAccounts: {
         deployer: {
@@ -64,10 +67,9 @@ module.exports = {
             default: 1,
         },
     },
+
+    sourcify: {
+        enabled: true,
+    },
     // mocha: 200000, //200 seconds max
 };
-
-// GOERLI_RPC_URL = process.env.GOERLI_RPC_URL || "https://eth-goerli";
-// PRIVATE_KEY = process.env.PRIVATE_KEY || "0xkey";
-// const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "key";
-// const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || "key";

@@ -5,7 +5,8 @@ import * as config from "../config.json";
 const rpcUrl =
     "https://api.stackup.sh/v1/node/b51f0843db36f2f091c6fe6b3f1e8e25bb1b52dc7111797924c47e5d63b15fca";
 
-const paymasterUrl = "";
+const paymasterUrl =
+    "https://api.stackup.sh/v1/paymaster/b51f0843db36f2f091c6fe6b3f1e8e25bb1b52dc7111797924c47e5d63b15fca";
 
 async function main() {
     const paymasterContext = { type: "payg" };

@@ -5,7 +5,7 @@ import * as config from "../config.json";
 const rpcUrl = config.rpcUrl;
 const paymasterUrl = "";
 
-async function generateAccount() {
+export async function generateAccount() {
     const paymasterContext = { type: "payg" };
     const paymasterMiddleware = Presets.Middleware.verifyingPaymaster(
         paymasterUrl,
@@ -25,6 +25,7 @@ async function generateAccount() {
     var builder = await Presets.Builder.SimpleAccount.init(signer, rpcUrl, opts);
     const address = builder.getSender();
     console.log(`Account address: ${address}`);
+    return address;
 }
 
 generateAccount().catch((error) => {

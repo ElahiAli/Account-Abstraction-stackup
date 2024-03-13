@@ -37,7 +37,7 @@ async function mintKipToken() {
     // Send the User Operation to the ERC-4337 mempool
     const spender = "0xE90116418c24817C649046075F745525C12b3daA";
     const amountNumber = "100";
-    const decimals = 6;
+    const decimals = 18;
     const symbol = await KIPContract.symbol();
     const amount = ethers.utils.parseUnits(amountNumber, decimals);
 

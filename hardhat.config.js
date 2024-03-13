@@ -9,7 +9,7 @@ require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key";
+const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "Your etherscan API key";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0xkey";
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL;
 const MUMBAi_RPC_URL = process.env.MUMBAI_RPC_URL;
@@ -55,7 +55,7 @@ module.exports = {
     //     // coinmarketcap: COINMARKETCAP_API_KEY,
     // },
     etherscan: {
-        apiKey: ETHERSCAN_API_KEY,
+        apiKey: POLYGONSCAN_API_KEY,
     },
 
     namedAccounts: {

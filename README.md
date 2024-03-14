@@ -200,3 +200,10 @@ sending the transaction to entryPoint through bundler
         onBuild: (op) => console.log("Signed UserOperation:", op),
     });
 ```
+
+---
+
+KIP-4337 project:
+
+mockScript folder contain batch and single user operation with other mock contract like tether(erc-20) , KipToken(erc-20) contracts
+_used for tests_

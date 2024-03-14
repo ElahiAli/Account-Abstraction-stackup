@@ -7,7 +7,7 @@ package.json
 img
 .env
 .*
-README.md
+
 coverage.json
 deployments
 .next
